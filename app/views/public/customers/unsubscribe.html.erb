@@ -1,0 +1,18 @@
+<p id="notice"></p>
+<div class="container">
+  <div class="row">
+    <h1 class="px-3 mx-auto">
+     <storong>本当に退会しますか？</storong>
+     <p>退会すると、会員登録情報や</p>
+     <P>これまでの購入履歴が閲覧できなくなります。</P>
+     <P>退会する場合は、「退会する」をクリックしてください。</P>
+    </h1>
+  </div>
+</div>
+<%= link_to "退会しない", public_customer_path(:id) %>
+</div>
+<%= link_to "退会する", public_withdrawal_path, method: :patch, data: { confirm: '本当に退会しますか？' } %>
+</div
+
+
+

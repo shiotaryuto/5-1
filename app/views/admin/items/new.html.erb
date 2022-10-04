@@ -1,0 +1,18 @@
+<h1>商品新規登録</h1>
+
+<%= form_with model: Item.new, url: admin_items_path do |f| %>
+
+<h2>商品画像</h2>
+  <%= f.file_field :image, accept: "image/*" %>
+<h2>商品名</h2>
+  <%= f.text_field :name %>
+<h2>商品説明</h2>
+ <%= f.text_area :introduction %>
+ <h2>ジャンル</h2>
+ <%= f.collection_select :genre_id,Genre.all, :id, :name %>
+<h2>税抜き価格</h2>
+ <%= f.text_field :price %>円
+
+ <%= f.submit "新規登録", class: 'btn btn-secondary' %>
+
+ <% end %>

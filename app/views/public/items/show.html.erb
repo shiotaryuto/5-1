@@ -1,0 +1,31 @@
+<div class="sidebar">
+  <section class="genre">
+    <h2 class="genre-heading common-heading">ジャンル検索</h2>
+      <% @items.each do |item| %>
+      <%= item.genre.name %>
+      <% end %>
+  </section>
+</div>
+
+<h1>
+<%= image_tag @item.image, size: "100x100" %>
+</h1>
+
+<div>
+  <h2>
+    <%= @item.name %>
+  </h2>
+  <h2>
+    <%= @item.introduction %>
+  </h2>
+  <h2>
+    ￥<%= @item.price %>
+  </h2>
+  <h2>
+      <%= form_with model: @cart_item, url: public_cart_items_path ,method: :post do |f| %>
+     <%= f.select :amount, [['1',1], ['2',2], ['3',3]], include_blank: "個数選択" %>
+     <%= f.hidden_field :item_id,:value => @item.id %>
+     <%= f.submit 'カートに入れる'%>
+  <% end %>
+  </h2>
+</div>

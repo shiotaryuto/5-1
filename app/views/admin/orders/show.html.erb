@@ -1,0 +1,48 @@
+<h1>注文履歴詳細</h1>
+
+<h2>購入者</h2>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
+
+<h2>注文日</h2>
+<%= @order.created_at %>
+
+<h2>住所</h2>
+<%= @order.customer.address %>
+
+<h2>支払方法</h2>
+<%= @order.payment_method %>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+
+  <% @order_details.each do |detail| %>
+  <tbody>
+  <tr>
+    <td> <%= detail.item.name %></td>
+    <td><%= (detail.item.price * 1.1).floor %></td>
+    <td>
+      <% @sum=0 %>
+      <% @sum+=detail.amount %>
+      <%= @sum %>
+    </td>
+    <td><%= ((detail.item.price * detail.amount) * 1.1).floor %></td>
+  </tr>
+  <% end %>
+</tbody>
+
+  <h2>商品合計</h2>
+  <%= @order.billing_amount - @order.postage %>円
+
+  <h2>送料</h2>
+  <%= @order.postage %>円
+
+  <h2>請求金額合計</h2>
+  <%= @order.billing_amount %>円
+

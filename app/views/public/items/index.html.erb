@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <section class="genre">
+    <h2 class="genre-heading common-heading">ジャンル検索</h2>
+      <% @items.each do |item| %>
+      <%= item.genre.name %>
+      <% end %>
+  </section>
+</div>
+    <h3>商品一覧</h3>
+        <table>
+          <tbody>
+            <tr class="item-box">
+              <% @items.each do |item| %>
+                <td class="item">
+                    <%= link_to public_item_path(item.id) do %>
+                      <%= image_tag item.get_image, size: "100x100" %><br>
+                      <%= item.name %><br>
+                      ￥<%= item.price %>
+                    <% end %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
